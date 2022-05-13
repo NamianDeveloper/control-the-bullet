@@ -27,14 +27,17 @@ public class ShootController : MonoBehaviour
     public void Fire()
     {
         managerFX.PlayFX(0);
+        UiController.Instance.ShowUiElements(false);
+
         GameObject bullet = Instantiate(bulletPrefab, spawnBulletPosition.position, spawnBulletPosition.rotation, gameObject.transform);
 
-        shutterAnimator.RetractShutter();
+        // shutterAnimator.RetractShutter();  <-- Retract Shutter
         SpawnBulletCase();
 
         TimeManager.Instance.SlowTime(true);
 
-        Observable.Timer(System.TimeSpan.FromSeconds(TimeManager.Instance.SecondBeforeControlBullet * Time.timeScale)).Subscribe(_ =>
+        Observable.Timer(System.TimeSpan.FromSeconds(TimeManager.Instance.SecondBeforeControlBullet * Time.timeScale))
+        .Subscribe(_ =>
         {
             TimeManager.Instance.SlowTime(false);
             cameraController.NewTarget(bullet.transform);
