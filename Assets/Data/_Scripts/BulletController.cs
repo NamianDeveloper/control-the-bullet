@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private float intensity = 15;
+    [SerializeField] private float intensity = 25;
     private Rigidbody rigidbody;
     private bool canMove;
     public bool CanMove
