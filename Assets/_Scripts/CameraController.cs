@@ -12,12 +12,19 @@ public class CameraController : MonoBehaviour
     {
         target = targets;
         gameObject.transform.SetParent(targets);
-        SetCamera();
+        SetCamera(target.gameObject);
     }
 
-    private void SetCamera()
+    private void SetCamera(GameObject target)
     {
-        gameObject.transform.DOLocalMove(new Vector3(0, ofsetY, -4), 0.5f);
         gameObject.transform.DORotate(new Vector3(), 0.5f);
+        gameObject.transform.DOLocalMove(new Vector3(0, ofsetY, -4), 0.5f)
+            .OnComplete(() =>
+            {
+                if (target.TryGetComponent<BulletController>(out BulletController bulletController))
+                {
+                    bulletController.CanMove = true;
+                }
+            });
     }
 }
