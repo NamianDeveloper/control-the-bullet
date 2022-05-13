@@ -15,10 +15,18 @@ public class ShootController : MonoBehaviour
 
     [Header("Links to scripts")]
     [SerializeField] private CameraController cameraController;
-    [SerializeField] private ShutterAnimator shutterAnimator;
 
+    private ShutterAnimator shutterAnimator;
+    private FXManager managerFX;
+
+    private void Start()
+    {
+        shutterAnimator = GetComponent<ShutterAnimator>();
+        managerFX = GetComponent<FXManager>();
+    }
     public void Fire()
     {
+        managerFX.PlayFX(0);
         GameObject bullet = Instantiate(bulletPrefab, spawnBulletPosition.position, spawnBulletPosition.rotation, gameObject.transform);
 
         shutterAnimator.RetractShutter();
@@ -34,6 +42,7 @@ public class ShootController : MonoBehaviour
     }
     private void SpawnBulletCase()
     {
+        managerFX.PlayFX(1);
         GameObject bulletCase = Instantiate(bulletCasePrefab, spawnBulletCasePosition.position, spawnBulletCasePosition.rotation, gameObject.transform);
         Destroy(bulletCase, 1f);
     }

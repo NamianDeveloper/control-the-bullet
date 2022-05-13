@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    private float intensity = 15;
     private Rigidbody rigidbody;
     private bool canMove;
     public bool CanMove
@@ -24,7 +25,7 @@ public class BulletController : MonoBehaviour
             float x = Input.GetAxis("Mouse X");
             float y = Input.GetAxis("Mouse Y");
 
-            Vector3 newRotate = new Vector3(y * 10, x * 10, 0);
+            Vector3 newRotate = new Vector3(-y * intensity, x * intensity, 0);
 
             transform.Rotate(newRotate);
         }
