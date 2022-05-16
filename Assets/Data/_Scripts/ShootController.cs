@@ -13,9 +13,6 @@ public class ShootController : MonoBehaviour
     [SerializeField] private Transform spawnBulletPosition;
     [SerializeField] private Transform spawnBulletCasePosition;
 
-    [Header("Links to scripts")]
-    [SerializeField] private CameraController cameraController;
-
     private ShutterAnimator shutterAnimator;
     private FXManager managerFX;
 
@@ -40,7 +37,7 @@ public class ShootController : MonoBehaviour
         .Subscribe(_ =>
         {
             TimeManager.Instance.SlowTime(false);
-            cameraController.NewTarget(bullet.transform);
+            CameraController.Instance.NewTarget(bullet.transform);
         });
     }
     private void SpawnBulletCase()

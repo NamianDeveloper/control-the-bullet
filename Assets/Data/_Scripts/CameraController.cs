@@ -6,24 +6,55 @@ using DG.Tweening;
 public class CameraController : MonoBehaviour
 {
     [SerializeField, Range(-2, 2)] private float ofsetY;
-    private Transform target;
 
+    public static CameraController Instance;
+
+    private Transform target;
+    private Vector3 startPos;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance == this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void Start()
+    {
+        startPos = transform.position;
+    }
     public void NewTarget(Transform targets)
     {
         target = targets;
         gameObject.transform.SetParent(targets);
-        SetCamera(target.gameObject);
+        SetCamera(new Vector3(0, ofsetY, -6), new Vector3(), 0.5f, targets);
     }
 
-    private void SetCamera(GameObject target)
+    public void ResetTarget(bool showUI = false)
     {
-        gameObject.transform.DORotate(new Vector3(), 0.5f);
-        gameObject.transform.DOLocalMove(new Vector3(0, ofsetY, -4), 0.5f)
+        target = null;
+        gameObject.transform.SetParent(null);
+        SetCamera(startPos, new Vector3(15, -20, 0), 0.4f);
+        if (showUI)
+        {
+            UiController.Instance.ShowUiElements();
+        }
+    }
+    private void SetCamera(Vector3 doMove, Vector3 doRotate, float time, Transform bulletTarget = null)
+    {
+        gameObject.transform.DORotate(doRotate, time);
+        gameObject.transform.DOLocalMove(doMove, time)
             .OnComplete(() =>
             {
-                if (target.TryGetComponent<BulletController>(out BulletController bulletController))
+                if (bulletTarget)
                 {
-                    bulletController.CanMove = true;
+                    if (target.TryGetComponent<BulletController>(out BulletController bulletController))
+                    {
+                        bulletController.CanMove = true;
+                    }
                 }
             });
     }

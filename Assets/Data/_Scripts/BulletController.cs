@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     [SerializeField] private float intensity = 20;
+    [SerializeField, Range(0, 8)] private float bulletSpeed = 3;
     private Rigidbody rigidbody;
     private bool canMove;
     public bool CanMove
@@ -18,7 +19,7 @@ public class BulletController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rigidbody.velocity = gameObject.transform.forward * 3;
+        rigidbody.velocity = gameObject.transform.forward * bulletSpeed;
 
         if (Input.GetMouseButton(0) && canMove)
         {
