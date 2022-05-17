@@ -5,9 +5,9 @@ using UniRx;
 
 public class BulletCollisions : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Block"))
+        if (other.gameObject.CompareTag("Block"))
         {
             CameraController.Instance.ResetTarget(true);
             Destroy(gameObject);

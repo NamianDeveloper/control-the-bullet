@@ -6,12 +6,19 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] private float intensity = 20;
     [SerializeField, Range(0, 8)] private float bulletSpeed = 3;
+
+    [SerializeField] private ParticleSystem wind;
+
     private Rigidbody rigidbody;
     private bool canMove;
     public bool CanMove
     {
         get => canMove;
-        set { canMove = true; }
+        set 
+        {
+            canMove = value;
+            wind.Play();
+        }
     }
     void Start()
     {

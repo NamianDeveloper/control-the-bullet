@@ -7,11 +7,10 @@ public class FireBarrelController : MonoBehaviour
     [SerializeField] private float Radius;
 
     [SerializeField] private ParticleSystem explosion;
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log($"В радиусе {Radius} все умрет");
             Collider[] playerCollider = Physics.OverlapSphere(transform.position, Radius, LayerMask.GetMask("Enemy"));
       
             foreach (Collider coll in playerCollider)

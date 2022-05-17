@@ -30,4 +30,8 @@ public class TimeManager : MonoBehaviour
         else
             Time.timeScale = timeScaleAfterFire;
     }
+    public void ResetSlowTime()
+    {
+        Time.timeScale = 1;
+    }
 }

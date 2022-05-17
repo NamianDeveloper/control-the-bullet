@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public void AddEnemy(GameObject enemy)
     {
         this.enemy.Add(enemy);
-        Debug.Log(this.enemy.Count);
     }
     public void DeleteEnemy(GameObject enemy)
     {
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
         if (enemy.Count == 0)
         {
             CameraController.Instance.ResetTarget();
+            UiController.Instance.ShowUiElements(false);
+            TimeManager.Instance.ResetSlowTime();
         }
     }
 }

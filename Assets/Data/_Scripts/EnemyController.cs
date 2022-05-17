@@ -4,8 +4,12 @@ using UnityEngine;
 using UniRx;
 public class EnemyController : MonoBehaviour
 {
+    private RagdollController ragdollController;
+
     void Start()
     {
+        ragdollController = GetComponent<RagdollController>();
+
         GameManager.Instance.AddEnemy(this.gameObject);
     }
 
@@ -19,11 +23,8 @@ public class EnemyController : MonoBehaviour
 
     public void DeleteEnemy()
     {
-        Observable.Timer(System.TimeSpan.FromSeconds(1))
-           .Subscribe(_ =>
-           {
-               GameManager.Instance.DeleteEnemy(this.gameObject);
-               Destroy(gameObject);
-           });
+        ragdollController.EnablePhysics(true);
+        GameManager.Instance.DeleteEnemy(this.gameObject);
+
     }
 }

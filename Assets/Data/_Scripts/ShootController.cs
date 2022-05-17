@@ -44,6 +44,10 @@ public class ShootController : MonoBehaviour
     {
         managerFX.PlayFX(1);
         GameObject bulletCase = Instantiate(bulletCasePrefab, spawnBulletCasePosition.position, spawnBulletCasePosition.rotation, gameObject.transform);
+        if (bulletCase.transform.TryGetComponent<Rigidbody>(out Rigidbody bulletCaseRigidbody))
+        {
+            bulletCaseRigidbody.AddForce(new Vector3(1, 1, -1), ForceMode.Impulse);
+        }
         Destroy(bulletCase, 1f);
     }
 }
