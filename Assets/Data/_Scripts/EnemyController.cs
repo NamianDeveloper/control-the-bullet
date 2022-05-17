@@ -13,13 +13,17 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Observable.Timer(System.TimeSpan.FromSeconds(1))
-            .TakeUntilDestroy(other.gameObject)
-            .Subscribe(_ =>
-            {
-                GameManager.Instance.DeleteEnemy(this.gameObject);
-                Destroy(gameObject);
-            });
+            DeleteEnemy();
         }
+    }
+
+    public void DeleteEnemy()
+    {
+        Observable.Timer(System.TimeSpan.FromSeconds(1))
+           .Subscribe(_ =>
+           {
+               GameManager.Instance.DeleteEnemy(this.gameObject);
+               Destroy(gameObject);
+           });
     }
 }
