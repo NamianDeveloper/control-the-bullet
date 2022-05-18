@@ -12,7 +12,8 @@ public class FireBarrelController : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             Collider[] playerCollider = Physics.OverlapSphere(transform.position, Radius, LayerMask.GetMask("Enemy"));
-      
+
+            Debug.Log(playerCollider.Length);
             foreach (Collider coll in playerCollider)
             {
                 if (coll.gameObject.TryGetComponent<EnemyController>(out EnemyController enemyController))

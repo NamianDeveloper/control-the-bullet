@@ -13,14 +13,6 @@ public class EnemyController : MonoBehaviour
         GameManager.Instance.AddEnemy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Bullet"))
-        {
-            DeleteEnemy();
-        }
-    }
-
     public void DeleteEnemy()
     {
         ragdollController.EnablePhysics(true);
