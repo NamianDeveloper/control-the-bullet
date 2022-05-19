@@ -107,10 +107,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5279138511153545893}
   - component: {fileID: 1666571418330588621}
-  - component: {fileID: 1023446595326475248}
-  - component: {fileID: 8610522009967953694}
   - component: {fileID: 3591187103026626536}
   - component: {fileID: 4584810112689946368}
+  - component: {fileID: 1023446595326475248}
+  - component: {fileID: 8610522009967953694}
+  - component: {fileID: 5218889854805114101}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -152,34 +153,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1023446595326475248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6472154967992070294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5cf72f74d4ca849923890b5e6a5c72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: 12
-  bulletSpeed: 7
-  wind: {fileID: 1787980041080020790}
---- !u!114 &8610522009967953694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6472154967992070294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829b84569f293e648ac04831463d7514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ImpactStrength: 3
 --- !u!65 &3591187103026626536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -301,6 +274,47 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1023446595326475248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472154967992070294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5cf72f74d4ca849923890b5e6a5c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 12
+  bulletSpeed: 7
+  wind: {fileID: 1787980041080020790}
+--- !u!114 &8610522009967953694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472154967992070294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829b84569f293e648ac04831463d7514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImpactStrength: 3
+--- !u!114 &5218889854805114101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472154967992070294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e23d66a3e278484d9d44aa9c8e191f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireMode: 1
 --- !u!1 &7012601833407723391
 GameObject:
   m_ObjectHideFlags: 0

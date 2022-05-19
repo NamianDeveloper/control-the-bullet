@@ -6,12 +6,16 @@ using UniRx;
 public class BulletCollisions : MonoBehaviour
 {
     [SerializeField] private float ImpactStrength;
+    private BulletMode bulletMode;
+    private void Start()
+    {
+        bulletMode = GetComponent<BulletMode>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Block"))
         {
-            CameraController.Instance.ResetTarget(true);
-            Destroy(gameObject);
+            DeleteBullet();
         }
         if (other.CompareTag("Enemy"))
         {
@@ -21,8 +25,18 @@ public class BulletCollisions : MonoBehaviour
                 partOfRagdoll.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
 
                 partOfRagdoll.RagdollController.EnablePhysics(true);
+
+                if (bulletMode.CurrentFireMode == FireMode.OneShotOneKill)
+                {
+                    DeleteBullet();
+                }
             }
         }
     }
 
+    private void DeleteBullet()
+    {
+        CameraController.Instance.ResetTarget(true);
+        Destroy(gameObject);
+    }
 }

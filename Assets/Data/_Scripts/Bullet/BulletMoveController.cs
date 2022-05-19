@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BulletController : MonoBehaviour
+using UniRx;
+public class BulletMoveController : MonoBehaviour
 {
     [SerializeField] private float intensity = 20;
     [SerializeField, Range(0, 8)] private float bulletSpeed = 3;
 
     [SerializeField] private ParticleSystem wind;
-
-    private Rigidbody rigidbody;
-    private bool canMove;
     public bool CanMove
     {
         get => canMove;
@@ -19,7 +16,10 @@ public class BulletController : MonoBehaviour
             canMove = value;
             wind.Play();
         }
-    }
+    } 
+
+    private Rigidbody rigidbody;
+    private bool canMove;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();

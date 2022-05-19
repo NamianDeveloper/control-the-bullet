@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UiController : MonoBehaviour
 {
-    [SerializeField] private GameObject elementUI;
+    [SerializeField] private GameObject[] elementsUI;
 
     public static UiController Instance;
     void Start()
@@ -20,6 +20,9 @@ public class UiController : MonoBehaviour
     }
     public void ShowUiElements(bool showMode = true)
     {
-        elementUI.SetActive(showMode);
+        foreach (GameObject elementUI in elementsUI)
+        {
+            elementUI.SetActive(showMode);
+        }
     }
 }

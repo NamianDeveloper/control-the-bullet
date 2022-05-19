@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
             {
                 if (bulletTarget)
                 {
-                    if (target.TryGetComponent<BulletController>(out BulletController bulletController))
+                    if (target.TryGetComponent<BulletMoveController>(out BulletMoveController bulletController))
                     {
                         bulletController.CanMove = true;
                     }
