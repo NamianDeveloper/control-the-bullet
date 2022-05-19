@@ -11,7 +11,7 @@ public class BulletMode : MonoBehaviour
     void Start()
     {
         currentFireMode = ChangeFireModeButton.CurrentFireMode;
-        Debug.Log("firemode - " + currentFireMode);
+
         if (currentFireMode == FireMode.PiercingShot)
         {
             Observable.Timer(System.TimeSpan.FromSeconds(30 * Time.timeScale))

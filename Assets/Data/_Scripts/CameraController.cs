@@ -6,6 +6,7 @@ using DG.Tweening;
 public class CameraController : MonoBehaviour
 {
     [SerializeField, Range(-2, 2)] private float ofsetY;
+    [SerializeField] private ShutterAnimator shutterAnimator;
 
     public static CameraController Instance;
 
@@ -30,22 +31,32 @@ public class CameraController : MonoBehaviour
     {
         target = targets;
         gameObject.transform.SetParent(targets);
-        SetCamera(new Vector3(0, ofsetY, -6), new Vector3(), 0.5f, targets);
+        SetCamera(new Vector3(0, ofsetY, -6), new Vector3(), 0.4f, targets);
     }
 
     public void ResetTarget(bool showUI = false)
     {
         target = null;
         gameObject.transform.SetParent(null);
-        SetCamera(startPos, new Vector3(15, -20, 0), 0.4f);
-        if (showUI)
+
+        gameObject.transform.DOLocalRotate(new Vector3(15, -20, 0), 0.4f);
+        gameObject.transform.DOLocalMove(startPos, 0.4f)
+        .OnComplete(() =>
         {
-            UiController.Instance.ShowUiElements();
-        }
+            if (showUI)
+            {
+
+                UiController.Instance.ShowUiElements();
+            }
+
+            Debug.Log("Перезарядка");
+            shutterAnimator.RetractShutter();
+
+        });
     }
     private void SetCamera(Vector3 doMove, Vector3 doRotate, float time, Transform bulletTarget = null)
     {
-        gameObject.transform.DORotate(doRotate, time);
+        gameObject.transform.DOLocalRotate(new Vector3(), time);
         gameObject.transform.DOLocalMove(doMove, time)
             .OnComplete(() =>
             {
