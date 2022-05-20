@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] private TextMeshProUGUI enemyCount;
+
     [SerializeField] private List<GameObject> enemy;
+
+    private int killEnemyCount;
+    private int MaxEnemyCount;
     private void Awake()
     {
         if (Instance == null)
@@ -21,10 +27,14 @@ public class GameManager : MonoBehaviour
     public void AddEnemy(GameObject enemy)
     {
         this.enemy.Add(enemy);
+        enemyCount.text = killEnemyCount + "/" + this.enemy.Count;
+        MaxEnemyCount++;
     }
     public void DeleteEnemy(GameObject enemy)
     {
-        this.enemy.Remove(enemy);
+        killEnemyCount++;
+        this.enemy.Remove(enemy); 
+        enemyCount.text = killEnemyCount + "/" + MaxEnemyCount;
         TryFinishGame();
     }
 

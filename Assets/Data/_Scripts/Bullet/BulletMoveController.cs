@@ -35,11 +35,11 @@ public class BulletMoveController : MonoBehaviour
 
             if (!((transform.rotation.eulerAngles.x < 40 && transform.rotation.eulerAngles.x > -40) || (transform.rotation.eulerAngles.x > 320 && transform.rotation.eulerAngles.x > -320)))
             {
-                if (transform.rotation.eulerAngles.x > 40 && transform.rotation.eulerAngles.x < 60 && -y < 0)
+                if (transform.rotation.eulerAngles.x > 40 && transform.rotation.eulerAngles.x < 70 && -y < 0)
                 {
                     transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
                 }
-                else if (transform.rotation.eulerAngles.x < 320 && transform.rotation.eulerAngles.x > 315 && -y > 0)
+                else if (transform.rotation.eulerAngles.x < 320 && transform.rotation.eulerAngles.x > 290 && -y > 0)
                 {
                     transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
                 }

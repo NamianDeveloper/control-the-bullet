@@ -20,7 +20,8 @@ public class BulletCollisions : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             if (other.TryGetComponent<PartOfRagdoll>(out PartOfRagdoll partOfRagdoll))
-            {    
+            {
+                Debug.Log(partOfRagdoll.RagdollController.gameObject.name);
                 GameManager.Instance.DeleteEnemy(partOfRagdoll.RagdollController.gameObject);
                 partOfRagdoll.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
 
