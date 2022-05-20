@@ -4,8 +4,6 @@ using UnityEngine;
 using UniRx;
 public class BulletMoveController : MonoBehaviour
 {
-    [SerializeField] private BulletMove bulletMove;
-
     [SerializeField, Space] private float intensity = 20;
     [SerializeField, Range(0, 8)] private float bulletSpeed = 3;
 
@@ -35,25 +33,23 @@ public class BulletMoveController : MonoBehaviour
             float x = Input.GetAxis("Mouse X");
             float y = Input.GetAxis("Mouse Y");
 
-            Vector3 newRotate = new Vector3(-y * intensity, x * intensity, 0);
-
-            if (bulletMove == BulletMove.First)
+            if (!((transform.rotation.eulerAngles.x < 40 && transform.rotation.eulerAngles.x > -40) || (transform.rotation.eulerAngles.x > 320 && transform.rotation.eulerAngles.x > -320)))
             {
-                transform.Rotate(newRotate);
+                if (transform.rotation.eulerAngles.x > 40 && transform.rotation.eulerAngles.x < 60 && -y < 0)
+                {
+                    transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
+                }
+                else if (transform.rotation.eulerAngles.x < 320 && transform.rotation.eulerAngles.x > 315 && -y > 0)
+                {
+                    transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
+                }
             }
             else
             {
-
                 transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
-                transform.Rotate(transform.InverseTransformDirection(Vector3.up), x * intensity / 6);
             }
 
-
+            transform.Rotate(transform.InverseTransformDirection(Vector3.up), x * intensity / 6);
         }
     }
-}
-public enum BulletMove
-{
-    First,
-    Second
 }
