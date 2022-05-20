@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5cf72f74d4ca849923890b5e6a5c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletMove: 0
   intensity: 12
   bulletSpeed: 7
   wind: {fileID: 1787980041080020790}
@@ -314,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e23d66a3e278484d9d44aa9c8e191f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireMode: 1
 --- !u!1 &7012601833407723391
 GameObject:
   m_ObjectHideFlags: 0
