@@ -2523,6 +2523,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1311621230}
     m_Modifications:
+    - target: {fileID: 279665122535395587, guid: 2d18d1ef7ec055147be0c4d7e875da3d, type: 3}
+      propertyPath: bulletCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4491849881210102684, guid: 2d18d1ef7ec055147be0c4d7e875da3d, type: 3}
       propertyPath: m_Name
       value: BulletCount
@@ -2623,6 +2627,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4491849881210102684, guid: 2d18d1ef7ec055147be0c4d7e875da3d, type: 3}
   m_PrefabInstance: {fileID: 1977379073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1977379076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 279665122535395587, guid: 2d18d1ef7ec055147be0c4d7e875da3d, type: 3}
+  m_PrefabInstance: {fileID: 1977379073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977379075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea0e9321d4662041a3327baecc1457f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2136973411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,9 +3046,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 9.151
       objectReference: {fileID: 0}
+    - target: {fileID: 4231820553321093927, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: bulletCountManager
+      value: 
+      objectReference: {fileID: 1977379076}
     - target: {fileID: 4283743366694321002, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
       propertyPath: m_Name
-      value: Player_left
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4283743366694321002, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
       propertyPath: m_IsActive

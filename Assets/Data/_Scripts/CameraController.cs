@@ -48,8 +48,6 @@ public class CameraController : MonoBehaviour
 
                 UiController.Instance.ShowUiElements();
             }
-
-            Debug.Log("Перезарядка");
             shutterAnimator.RetractShutter();
 
         });
