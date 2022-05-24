@@ -28,6 +28,10 @@ public class ShootController : MonoBehaviour
 
             GameObject bullet = Instantiate(bulletPrefab, spawnBulletPosition.position, spawnBulletPosition.rotation, gameObject.transform);
 
+            BulletMoveController bulletMoveController = bullet.GetComponent<BulletMoveController>();
+
+            bulletMoveController.BulletSpeed = 40;
+
             TimeManager.Instance.SlowTime(true);
 
             Observable.Timer(System.TimeSpan.FromSeconds(TimeManager.Instance.SecondBeforeControlBullet * Time.timeScale))
@@ -35,6 +39,7 @@ public class ShootController : MonoBehaviour
             {
                 TimeManager.Instance.SlowTime(false);
                 CameraController.Instance.NewTarget(bullet.transform);
+                bulletMoveController.BulletSpeed = 5;
             });
             bulletCountManager.DeleteBullet();
         }

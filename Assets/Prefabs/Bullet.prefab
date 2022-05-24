@@ -286,9 +286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5cf72f74d4ca849923890b5e6a5c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletMove: 1
-  intensity: 12
+  intensity: 2
   bulletSpeed: 7
+  maxTiltAngle: 70
   wind: {fileID: 1787980041080020790}
 --- !u!114 &8610522009967953694
 MonoBehaviour:

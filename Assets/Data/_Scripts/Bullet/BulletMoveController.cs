@@ -4,8 +4,9 @@ using UnityEngine;
 using UniRx;
 public class BulletMoveController : MonoBehaviour
 {
-    [SerializeField, Space] private float intensity = 20;
+    [SerializeField, Space] private float intensity = 2;
     [SerializeField, Range(0, 8)] private float bulletSpeed = 3;
+    [SerializeField] private float maxTiltAngle;
 
     [SerializeField] private ParticleSystem wind;
     public bool CanMove
@@ -18,11 +19,25 @@ public class BulletMoveController : MonoBehaviour
         }
     }
 
+    public float BulletSpeed
+    {
+        get => bulletSpeed;
+        set { bulletSpeed = value; }
+    }
+
+    private float secondMaxTiltAngle;
+
     private Rigidbody rigidbody;
+
     private bool canMove;
+    private bool canRotateX;
+
     void Start()
     {
+        canRotateX = true;
         rigidbody = GetComponent<Rigidbody>();
+
+        secondMaxTiltAngle = 360 - maxTiltAngle;
     }
     void FixedUpdate()
     {
@@ -33,23 +48,24 @@ public class BulletMoveController : MonoBehaviour
             float x = Input.GetAxis("Mouse X");
             float y = Input.GetAxis("Mouse Y");
 
-            if (!((transform.rotation.eulerAngles.x < 40 && transform.rotation.eulerAngles.x > -40) || (transform.rotation.eulerAngles.x > 320 && transform.rotation.eulerAngles.x > -320)))
+            if (!((transform.rotation.eulerAngles.x < maxTiltAngle && transform.rotation.eulerAngles.x > -maxTiltAngle) || (transform.rotation.eulerAngles.x > secondMaxTiltAngle && transform.rotation.eulerAngles.x > -secondMaxTiltAngle)))
             {
-                if (transform.rotation.eulerAngles.x > 40 && transform.rotation.eulerAngles.x < 70 && -y < 0)
+                if (transform.rotation.eulerAngles.x > maxTiltAngle && transform.rotation.eulerAngles.x < maxTiltAngle + 30 && -y < 0)
                 {
-                    transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
+                    canRotateX = true;
                 }
-                else if (transform.rotation.eulerAngles.x < 320 && transform.rotation.eulerAngles.x > 290 && -y > 0)
+                else if (transform.rotation.eulerAngles.x < secondMaxTiltAngle && transform.rotation.eulerAngles.x > secondMaxTiltAngle - 30 && -y > 0)
                 {
-                    transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
+                    canRotateX = true;
                 }
-            }
-            else
-            {
-                transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity / 6);
+                else
+                {
+                    canRotateX = false;
+                }
             }
 
-            transform.Rotate(transform.InverseTransformDirection(Vector3.up), x * intensity / 6);
+            if (canRotateX) transform.Rotate(transform.InverseTransformDirection(transform.right), -y * intensity);
+            transform.Rotate(transform.InverseTransformDirection(Vector3.up), x * intensity);
         }
     }
 }

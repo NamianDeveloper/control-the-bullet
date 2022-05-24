@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
                 UiController.Instance.ShowUiElements();
             }
             shutterAnimator.RetractShutter();
-
+            GameManager.Instance.OnEndBullet();
         });
     }
     private void SetCamera(Vector3 doMove, Vector3 doRotate, float time, Transform bulletTarget = null)
