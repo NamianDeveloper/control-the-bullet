@@ -13,10 +13,10 @@ public class EnemyController : MonoBehaviour
         GameManager.Instance.AddEnemy(this.gameObject);
     }
 
-    public void DeleteEnemy()
+    public void DeleteEnemy(KillType kiilType)
     {
         ragdollController.EnablePhysics(true);
-        GameManager.Instance.DeleteEnemy(this.gameObject);
+        GameManager.Instance.DeleteEnemy(this.gameObject, kiilType);
 
     }
 }

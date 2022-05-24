@@ -173,6 +173,7 @@ MonoBehaviour:
   - {fileID: 6069633855208526048}
   - {fileID: 4655964530924667702}
   - {fileID: 4037525010963808338}
+  mark: {fileID: 3657533587318131170}
 --- !u!1 &3657533587318131170
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3227041227273765049}
   m_Layer: 6
-  m_Name: GameObject
+  m_Name: Mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +357,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9f04ee6b209c62945ba1bb22c94885f2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -926,6 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329298 stripped
 GameObject:
@@ -1021,6 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329304 stripped
 GameObject:
@@ -1116,6 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329310 stripped
 GameObject:
@@ -1211,6 +1215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329588 stripped
 GameObject:
@@ -1306,6 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329590 stripped
 GameObject:
@@ -1401,6 +1407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329734 stripped
 GameObject:
@@ -1495,6 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 1
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329738 stripped
 GameObject:
@@ -1589,6 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329740 stripped
 GameObject:
@@ -1684,6 +1693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329742 stripped
 GameObject:
@@ -1779,6 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}
 --- !u!1 &1010672421255329784 stripped
 GameObject:
@@ -1827,4 +1838,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollController: {fileID: 7296743775123274926}
+  isHead: 0
   Rigidbody: {fileID: 0}

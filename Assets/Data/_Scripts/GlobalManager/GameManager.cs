@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI enemyCount;
     [SerializeField] private BulletCountManager bulletCountManager;
+    [SerializeField] private UiController uiController;
 
     [SerializeField] private List<GameObject> enemy;
 
@@ -35,14 +36,15 @@ public class GameManager : MonoBehaviour
         enemyCount.text = killEnemyCount + "/" + this.enemy.Count;
         MaxEnemyCount++;
     }
-    public void DeleteEnemy(GameObject enemy)
+    public void DeleteEnemy(GameObject enemy, KillType killType = KillType.Body)
     {
+        UiController.Instance.ShowMessageKill(killType);
+        MoneyController.Instance.AddMoney(killType);
         killEnemyCount++;
         this.enemy.Remove(enemy); 
         enemyCount.text = killEnemyCount + "/" + MaxEnemyCount;
         TryFinishGame();
     }
-
     private void TryFinishGame()
     {
         if (enemy.Count == 0)
@@ -61,4 +63,10 @@ public class GameManager : MonoBehaviour
             loseScreen.SetActive(true);
         }
     }
+}
+public enum KillType
+{
+    Headshot,
+    Body,
+    Explosion
 }

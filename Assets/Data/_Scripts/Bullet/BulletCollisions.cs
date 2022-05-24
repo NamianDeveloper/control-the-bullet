@@ -7,9 +7,11 @@ public class BulletCollisions : MonoBehaviour
 {
     [SerializeField] private float ImpactStrength;
     private BulletMode bulletMode;
+    private BulletMoveController bulletMoveController;
     private void Start()
     {
         bulletMode = GetComponent<BulletMode>();
+        bulletMoveController = GetComponent<BulletMoveController>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,11 +23,19 @@ public class BulletCollisions : MonoBehaviour
         {
             if (other.TryGetComponent<PartOfRagdoll>(out PartOfRagdoll partOfRagdoll))
             {
-                Debug.Log(partOfRagdoll.RagdollController.gameObject.name);
-                GameManager.Instance.DeleteEnemy(partOfRagdoll.RagdollController.gameObject);
+                GameManager.Instance.DeleteEnemy(partOfRagdoll.RagdollController.gameObject, partOfRagdoll.PartOfKill);
                 partOfRagdoll.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
 
                 partOfRagdoll.RagdollController.EnablePhysics(true);
+
+                bulletMoveController.BulletSpeed = 1;
+                Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)
+                    .TakeUntilDestroy(gameObject)
+                    .TakeUntilDisable(gameObject)
+                    .Subscribe(_ => 
+                    {
+                        bulletMoveController.BulletSpeed = 5; 
+                    });
 
                 if (bulletMode.CurrentFireMode == FireMode.OneShotOneKill)
                 {

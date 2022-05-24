@@ -13,12 +13,11 @@ public class FireBarrelController : MonoBehaviour
         {
             Collider[] playerCollider = Physics.OverlapSphere(transform.position, Radius, LayerMask.GetMask("Enemy"));
 
-            Debug.Log(playerCollider.Length);
             foreach (Collider coll in playerCollider)
             {
                 if (coll.gameObject.TryGetComponent<EnemyController>(out EnemyController enemyController))
                 {
-                    enemyController.DeleteEnemy();
+                    enemyController.DeleteEnemy(KillType.Explosion);
                 }
             }
             explosion.Play();
