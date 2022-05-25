@@ -20,7 +20,7 @@ public class MoneyController : MonoBehaviour
             Destroy(gameObject);
         }
       if(PlayerPrefs.HasKey("money")) money = PlayerPrefs.GetInt("money");
-        moneyText.text = money + "$";
+        moneyText.text = money.ToString();
     }
 
     public void AddMoney(KillType killType)
@@ -38,7 +38,7 @@ public class MoneyController : MonoBehaviour
                 break;
         }
     
-        moneyText.text = money + "$";
+        moneyText.text = money.ToString();
         PlayerPrefs.SetInt("money", money);
     }
 }
