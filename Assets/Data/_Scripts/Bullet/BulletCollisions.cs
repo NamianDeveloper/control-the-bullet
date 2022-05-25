@@ -19,7 +19,7 @@ public class BulletCollisions : MonoBehaviour
         {
             DeleteBullet();
         }
-        if (other.CompareTag("Enemy"))
+        else if (other.CompareTag("Enemy"))
         {
             if (other.TryGetComponent<PartOfRagdoll>(out PartOfRagdoll partOfRagdoll))
             {
@@ -32,15 +32,34 @@ public class BulletCollisions : MonoBehaviour
                 Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)
                     .TakeUntilDestroy(gameObject)
                     .TakeUntilDisable(gameObject)
-                    .Subscribe(_ => 
+                    .Subscribe(_ =>
                     {
-                        bulletMoveController.BulletSpeed = 5; 
+                        bulletMoveController.BulletSpeed = 5;
                     });
 
                 if (bulletMode.CurrentFireMode == FireMode.OneShotOneKill)
                 {
                     DeleteBullet();
                 }
+            }
+        }
+
+        else if (other.CompareTag("Glass"))
+        {
+            if (other.TryGetComponent<PartOfGlass>(out PartOfGlass partOfGlass))
+            {
+                partOfGlass.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
+
+                partOfGlass.GlassController.EnablePhysics(true);
+
+                bulletMoveController.BulletSpeed = 1;
+                Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)
+                    .TakeUntilDestroy(gameObject)
+                    .TakeUntilDisable(gameObject)
+                    .Subscribe(_ =>
+                    {
+                        bulletMoveController.BulletSpeed = 5;
+                    });
             }
         }
     }
