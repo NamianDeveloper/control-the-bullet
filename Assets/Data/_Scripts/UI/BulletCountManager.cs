@@ -12,10 +12,11 @@ public class BulletCountManager : MonoBehaviour
     public int BulletCount => bulletCount;
 
     private int bulletCount;
-    private List<GameObject> bulletIcons;
+    [SerializeField] private List<GameObject> bulletIcons;
     void Start()
     {
-        Init();
+        bulletCount = maxBulletCount;
+      //  Init();
     }
 
     public void DeleteBullet(int deleteBullet = 1)
@@ -23,7 +24,7 @@ public class BulletCountManager : MonoBehaviour
         for (int i = 0; i < deleteBullet; i++)
         {
             bulletCount--;
-            bulletIcons[bulletCount].GetComponent<Image>().color = new Color32(0, 0, 0, 128);
+            bulletIcons[bulletCount].GetComponent<Image>().color = new Color32(1, 1, 1, 100);
         }
         Debug.Log(bulletCount);
     }

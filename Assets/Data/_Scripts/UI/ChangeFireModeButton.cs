@@ -37,6 +37,6 @@ public class ChangeFireModeButton : MonoBehaviour
         CurrentID++;
         Debug.Log("Изменил Режим " + currentFireMode);
         currentFireMode = (FireMode)Enum.GetValues(typeof(FireMode)).GetValue(CurrentID);
-        currentModeText.text = $"Current mode: \r\n {currentFireMode}";
+      //  currentModeText.text = $"Current mode: \r\n {currentFireMode}";
     }
 }
