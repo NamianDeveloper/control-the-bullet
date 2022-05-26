@@ -6,11 +6,17 @@ public class PartOfRagdoll : MonoBehaviour
 {
     [SerializeField] private RagdollController ragdollController;
     [SerializeField] private bool isHead;
+
     public Rigidbody Rigidbody;
     public RagdollController RagdollController => ragdollController;
     public KillType PartOfKill => isHead ? KillType.Headshot : KillType.Body;
     private void Start()
     {
         Rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public void AddBlood(Vector3 pointPosition)
+    {
+        ragdollController.point.transform.position = pointPosition;
     }
 }

@@ -26,7 +26,9 @@ public class BulletCollisions : MonoBehaviour
                 GameManager.Instance.DeleteEnemy(partOfRagdoll.RagdollController.gameObject, partOfRagdoll.PartOfKill);
                 partOfRagdoll.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
 
-                partOfRagdoll.RagdollController.EnablePhysics(true);
+                partOfRagdoll.AddBlood(transform.position);
+
+                partOfRagdoll.RagdollController.EnablePhysics(true, transform.position);
 
                 bulletMoveController.BulletSpeed = 1;
                 Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)
