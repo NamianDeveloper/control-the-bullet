@@ -31,13 +31,16 @@ public class MoneyController : MonoBehaviour
                 money += 100;
                 break;
             case KillType.Headshot:
-                money += 200;
+                money += 250;
                 break;
             case KillType.Explosion:
-                money += 300;
+                money += 550;
                 break;
+
+                // Doublekill - 200 
+                // TripleKill - 300 
         }
-    
+
         moneyText.text = money.ToString();
         PlayerPrefs.SetInt("money", money);
     }

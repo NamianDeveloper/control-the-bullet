@@ -9,6 +9,10 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject MessageKill;
     [SerializeField] private TextMeshProUGUI MessageKillText;
 
+    [SerializeField,Space] private string headshotKillText;
+    [SerializeField] private string boomKillText;
+    [SerializeField] private string tripleKillText;
+    [SerializeField] private string doubleKillText;
     public static UiController Instance;
 
     private int killCountInPeriod;
@@ -38,19 +42,19 @@ public class UiController : MonoBehaviour
         switch (killType)
         {
             case KillType.Headshot:
-                MessageKillText.text = "Хедшот!";
+                MessageKillText.text = headshotKillText;
                 break;
             case KillType.Explosion:
-                MessageKillText.text = "Врыв!";
+                MessageKillText.text = boomKillText;
                 break;
             default:
                 if (killCountInPeriod == 2)
                 {
-                    MessageKillText.text = "Даблкилл!";
+                    MessageKillText.text = doubleKillText;
                 }
                 else if (killCountInPeriod == 3)
                 {
-                    MessageKillText.text = "Триплкилл!";
+                    MessageKillText.text = tripleKillText;
                 }
                 else
                 {

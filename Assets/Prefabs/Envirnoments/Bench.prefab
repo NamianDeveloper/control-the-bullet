@@ -91,6 +91,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BENCH
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cf2ef36b47c01842952a1b443209471, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf2ef36b47c01842952a1b443209471, type: 3}
 --- !u!4 &6060020443723418033 stripped
@@ -98,3 +102,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cf2ef36b47c01842952a1b443209471, type: 3}
   m_PrefabInstance: {fileID: 6022224201379753562}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6868645638000415499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2cf2ef36b47c01842952a1b443209471, type: 3}
+  m_PrefabInstance: {fileID: 6022224201379753562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6685153734544488104
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868645638000415499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -259488361049139469, guid: 2cf2ef36b47c01842952a1b443209471, type: 3}

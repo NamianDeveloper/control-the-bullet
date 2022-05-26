@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: 4037525010963808338}
   mark: {fileID: 3657533587318131170}
   blood: {fileID: 4631282190411300436}
+  time: 1
   point: {fileID: 6431855173780778567}
 --- !u!1 &3657533587318131170
 GameObject:
@@ -1712,6 +1713,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1721,7 +1734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
       propertyPath: m_LocalRotation.w

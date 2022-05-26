@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class RagdollController : MonoBehaviour
 {
     [SerializeField] private Rigidbody[] AllRigidbodys;
     [SerializeField] private GameObject mark;
     [SerializeField] private ParticleSystem blood;
+
+    [SerializeField] private float time;
 
     public GameObject point;
     private void Start()
@@ -26,6 +29,8 @@ public class RagdollController : MonoBehaviour
     }
     private void ShowBlood()
     {
-        blood.Play();
+
+        Observable.Timer(System.TimeSpan.FromSeconds(time * Time.timeScale)).TakeUntilDestroy(gameObject).TakeUntilDisable(gameObject).Subscribe(_ => { blood.Play(); });
+       
     }
 }

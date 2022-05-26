@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UniRx;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         UiController.Instance.ShowMessageKill(killType);
         MoneyController.Instance.AddMoney(killType);
         killEnemyCount++;
-        this.enemy.Remove(enemy); 
+        this.enemy.Remove(enemy);
         enemyCount.text = killEnemyCount + "/" + MaxEnemyCount;
         TryFinishGame();
     }
@@ -60,8 +61,24 @@ public class GameManager : MonoBehaviour
     {
         if (bulletCountManager.BulletCount == 0 && !winGame)
         {
-            loseScreen.SetActive(true);
+            ShowScreen(false);
         }
+    }
+
+    private void ShowScreen(bool statusGame)
+    {
+        UiController.Instance.ShowUiElements(false);
+        Observable.Timer(System.TimeSpan.FromSeconds(3 * Time.deltaTime)).Subscribe(_ =>
+        {
+            if (statusGame)
+            {
+                winScreen.SetActive(true);
+            }
+            else
+            {
+                loseScreen.SetActive(true);
+            }
+        });
     }
 }
 public enum KillType

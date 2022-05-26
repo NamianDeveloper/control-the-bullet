@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4951092, g: 0.63664764, b: 0.7219856, a: 1}
+  m_IndirectSpecularColor: {r: 0.49510908, g: 0.6366484, b: 0.7219871, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -995,11 +995,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8445980358336409275, guid: ffc4f0967e1aba34cba72914c4565e6a, type: 3}
   m_PrefabInstance: {fileID: 336611108}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &336611110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8445980358336409276, guid: ffc4f0967e1aba34cba72914c4565e6a, type: 3}
-  m_PrefabInstance: {fileID: 336611108}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &409465295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1444,11 +1439,6 @@ PrefabInstance:
 --- !u!224 &534876674 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5790888822417561529, guid: ecb4ccde70ef1ad409ed51c1d97e8a36, type: 3}
-  m_PrefabInstance: {fileID: 534876673}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &534876675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5790888822417561534, guid: ecb4ccde70ef1ad409ed51c1d97e8a36, type: 3}
   m_PrefabInstance: {fileID: 534876673}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &534876676 stripped
@@ -4756,10 +4746,12 @@ MonoBehaviour:
   - {fileID: 89496099}
   - {fileID: 468110397}
   - {fileID: 1977379075}
-  - {fileID: 534876675}
-  - {fileID: 336611110}
   MessageKill: {fileID: 1872307610}
   MessageKillText: {fileID: 1872307609}
+  headshotKillText: 'Headshot! '
+  boomKillText: Grenadier!
+  tripleKillText: Triple kill!
+  doubleKillText: Double kill!
 --- !u!1001 &3571012002121907605
 PrefabInstance:
   m_ObjectHideFlags: 0
