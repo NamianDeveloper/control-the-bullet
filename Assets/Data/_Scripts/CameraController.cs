@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField, Range(-2, 2)] private float ofsetY;
     [SerializeField] private ShutterAnimator shutterAnimator;
+    [SerializeField] private Transform player;
 
     public static CameraController Instance;
 
@@ -25,7 +26,8 @@ public class CameraController : MonoBehaviour
     }
     private void Start()
     {
-        startPos = transform.position;
+        startPos = transform.localPosition;
+        Debug.Log(startPos);
     }
     public void NewTarget(Transform targets)
     {
@@ -36,8 +38,9 @@ public class CameraController : MonoBehaviour
 
     public void ResetTarget(bool showUI = false)
     {
+       // gameObject.transform.SetParent(player);
         target = null;
-        gameObject.transform.SetParent(null);
+        gameObject.transform.SetParent(player);
 
         gameObject.transform.DOLocalRotate(new Vector3(15, -20, 0), 0.4f);
         gameObject.transform.DOLocalMove(startPos, 0.4f)
@@ -50,6 +53,8 @@ public class CameraController : MonoBehaviour
             }
             shutterAnimator.RetractShutter();
             GameManager.Instance.OnEndBullet();
+            Debug.Log("1 - " + startPos);
+            Debug.Log("2 - " + transform.position);
         });
     }
     private void SetCamera(Vector3 doMove, Vector3 doRotate, float time, Transform bulletTarget = null)

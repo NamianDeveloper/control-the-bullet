@@ -37,7 +37,6 @@ public class UiController : MonoBehaviour
     public void ShowMessageKill(KillType killType)
     {
         killCountInPeriod++;
-
        
         switch (killType)
         {
@@ -65,7 +64,7 @@ public class UiController : MonoBehaviour
 
         MessageKill.SetActive(true);
 
-        Observable.Timer(System.TimeSpan.FromSeconds(3) * Time.timeScale)
+        Observable.Timer(System.TimeSpan.FromSeconds(1.5 * Time.timeScale) * Time.timeScale)
         .Subscribe(_ =>
         {
             MessageKill.SetActive(false);

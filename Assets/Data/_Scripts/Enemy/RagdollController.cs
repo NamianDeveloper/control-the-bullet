@@ -11,6 +11,8 @@ public class RagdollController : MonoBehaviour
 
     [SerializeField] private float time;
 
+    public bool IsDead { get;  set; }
+
     public GameObject point;
     private void Start()
     {
@@ -20,7 +22,6 @@ public class RagdollController : MonoBehaviour
     public void EnablePhysics(bool status, Vector3 pointOfImpact = new Vector3())
     {
         mark.SetActive(!status);
-        Debug.Log("Попал в " + pointOfImpact);
         ShowBlood();
         for (int i = 0; i < AllRigidbodys.Length; i++)
         {
@@ -30,7 +31,8 @@ public class RagdollController : MonoBehaviour
     private void ShowBlood()
     {
 
-        Observable.Timer(System.TimeSpan.FromSeconds(time * Time.timeScale)).TakeUntilDestroy(gameObject).TakeUntilDisable(gameObject).Subscribe(_ => { blood.Play(); });
-       
+        //Observable.Timer(System.TimeSpan.FromSeconds(time * Time.timeScale)).TakeUntilDestroy(gameObject).TakeUntilDisable(gameObject).Subscribe(_ => { blood.Play(); });
+        blood.Play();
+
     }
 }

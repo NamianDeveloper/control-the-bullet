@@ -5,7 +5,7 @@ using UniRx;
 public class BulletMoveController : MonoBehaviour
 {
     [SerializeField, Space] private float intensity = 2;
-    [SerializeField, Range(0, 8)] private float bulletSpeed = 3;
+    [SerializeField, Range(0, 15)] private float bulletSpeed = 7;
     [SerializeField] private float maxTiltAngle;
 
     [SerializeField] private ParticleSystem wind;

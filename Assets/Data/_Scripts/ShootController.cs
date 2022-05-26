@@ -30,7 +30,7 @@ public class ShootController : MonoBehaviour
 
             BulletMoveController bulletMoveController = bullet.GetComponent<BulletMoveController>();
 
-            bulletMoveController.BulletSpeed = 40;
+            bulletMoveController.BulletSpeed = 120;
 
             TimeManager.Instance.SlowTime(true);
 
@@ -39,7 +39,7 @@ public class ShootController : MonoBehaviour
             {
                 TimeManager.Instance.SlowTime(false);
                 CameraController.Instance.NewTarget(bullet.transform);
-                bulletMoveController.BulletSpeed = 5;
+                bulletMoveController.BulletSpeed = 7;
             });
             bulletCountManager.DeleteBullet();
         }
