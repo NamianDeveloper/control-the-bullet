@@ -76,7 +76,19 @@ public class CameraController : MonoBehaviour
     {
         int currentPosition = Random.Range(0, allCameraPosition.Length);
         if (isStart) currentPosition = 0;
-        transform.DOLocalMove(allCameraPosition[currentPosition].transform.localPosition, 0.5f * Time.timeScale);
-        transform.DOLocalRotate(allCameraPosition[currentPosition].transform.eulerAngles, 0.5f * Time.timeScale);
+        Debug.Log(transform.eulerAngles + "/" + allCameraPosition[currentPosition].transform.eulerAngles);
+        if (isStart)
+        {
+            Debug.Log("Сейчас на " + transform.position);
+            Debug.Log("Долэен перемещаться к " + allCameraPosition[0].transform.position);
+            transform.DOMove(allCameraPosition[0].transform.position, 0.5f * Time.timeScale);
+            transform.DORotate(allCameraPosition[0].transform.eulerAngles, 0.5f * Time.timeScale);
+        }
+        else
+        {
+            transform.DOMove(allCameraPosition[currentPosition].transform.position, 0.5f * Time.timeScale);
+            transform.DORotate(allCameraPosition[currentPosition].transform.eulerAngles, 0.5f * Time.timeScale);
+        }
+
     }
 }
