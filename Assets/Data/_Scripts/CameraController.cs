@@ -52,8 +52,7 @@ public class CameraController : MonoBehaviour
             }
             shutterAnimator.RetractShutter();
             GameManager.Instance.OnEndBullet();
-            Debug.Log("1 - " + startPos);
-            Debug.Log("2 - " + transform.position);
+            TimeManager.Instance.ResetSlowTime();
         });
     }
     private void SetCamera(Vector3 doMove, Vector3 doRotate, float time, Transform bulletTarget = null)

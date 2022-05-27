@@ -8,14 +8,18 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject[] elementsUI;
     [SerializeField] private GameObject MessageKill;
     [SerializeField] private TextMeshProUGUI MessageKillText;
+    [SerializeField] private GameObject tapToShot;
 
     [SerializeField,Space] private string headshotKillText;
     [SerializeField] private string boomKillText;
     [SerializeField] private string tripleKillText;
     [SerializeField] private string doubleKillText;
+
     public static UiController Instance;
+    public GameObject TapToShot => tapToShot;
 
     private int killCountInPeriod;
+
     void Start()
     {
         if (Instance == null)

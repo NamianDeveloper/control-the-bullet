@@ -23,10 +23,16 @@ public class ShutterAnimator : MonoBehaviour
     public void RetractShutter()
     {
         playerAnimator.Play("Reload");
+        UiController.Instance.TapToShot.SetActive(false);
         Observable.Timer(System.TimeSpan.FromSeconds(delay * Time.timeScale))
             .TakeUntilDestroy(gameObject)
             .TakeUntilDisable(gameObject)
             .Subscribe(_ => SpawnBulletCase());
+
+        Observable.Timer(System.TimeSpan.FromSeconds(3 * Time.timeScale))
+          .TakeUntilDestroy(gameObject)
+          .TakeUntilDisable(gameObject)
+          .Subscribe(_ => UiController.Instance.TapToShot.SetActive(true));
     }
     private void SpawnBulletCase()
     {

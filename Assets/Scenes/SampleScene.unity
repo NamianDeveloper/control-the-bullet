@@ -4876,6 +4876,7 @@ MonoBehaviour:
   - {fileID: 1977379075}
   MessageKill: {fileID: 1872307610}
   MessageKillText: {fileID: 1872307609}
+  tapToShot: {fileID: 89496099}
   headshotKillText: 'Headshot! '
   boomKillText: Grenadier!
   tripleKillText: Triple kill!

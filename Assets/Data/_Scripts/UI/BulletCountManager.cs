@@ -16,7 +16,6 @@ public class BulletCountManager : MonoBehaviour
     void Start()
     {
         bulletCount = maxBulletCount;
-      //  Init();
     }
 
     public void DeleteBullet(int deleteBullet = 1)
@@ -25,21 +24,6 @@ public class BulletCountManager : MonoBehaviour
         {
             bulletCount--;
             bulletIcons[bulletCount].GetComponent<Image>().color = new Color32(1, 1, 1, 100);
-        }
-        Debug.Log(bulletCount);
-    }
-
-    private void Init()
-    {
-        bulletCount = maxBulletCount;
-        bulletIcons = new List<GameObject>();
-        Vector3 startPos = new Vector3(0, 0, 0);
-        for (int i = 0; i < maxBulletCount; i++)
-        {
-            GameObject icon = Instantiate(bulletIconPrefab, spawnPoint.position, spawnPoint.rotation, spawnPoint);
-            icon.transform.localPosition = startPos;
-            bulletIcons.Add(icon);
-            startPos.y -= 100;
         }
     }
 }
