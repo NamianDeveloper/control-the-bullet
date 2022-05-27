@@ -23,29 +23,30 @@ public class ShootController : MonoBehaviour
     {
         if (bulletCountManager.BulletCount > 0)
         {
-            managerFX.PlayFX(0);
+            CameraController.Instance.MoveShootCamera(); 
             UiController.Instance.ShowUiElements(false);
 
-            GameObject bullet = Instantiate(bulletPrefab, spawnBulletPosition.position, spawnBulletPosition.rotation, gameObject.transform);
-
-            BulletMoveController bulletMoveController = bullet.GetComponent<BulletMoveController>();
-
-            bulletMoveController.BulletSpeed = 120;
-
-            TimeManager.Instance.SlowTime(true);
-
-            Observable.Timer(System.TimeSpan.FromSeconds(TimeManager.Instance.SecondBeforeControlBullet * Time.timeScale))
-            .Subscribe(_ =>
+            Observable.Timer(System.TimeSpan.FromSeconds(0.5f * Time.timeScale)).Subscribe(_ =>
             {
-                TimeManager.Instance.SlowTime(false);
-                CameraController.Instance.NewTarget(bullet.transform);
-                bulletMoveController.BulletSpeed = 10;
+                managerFX.PlayFX(0);
+
+                GameObject bullet = Instantiate(bulletPrefab, spawnBulletPosition.position, spawnBulletPosition.rotation, gameObject.transform);
+
+                BulletMoveController bulletMoveController = bullet.GetComponent<BulletMoveController>();
+
+                bulletMoveController.BulletSpeed = 120;
+
+                TimeManager.Instance.SlowTime(true);
+
+                Observable.Timer(System.TimeSpan.FromSeconds(TimeManager.Instance.SecondBeforeControlBullet * Time.timeScale))
+                .Subscribe(_ =>
+                {
+                    TimeManager.Instance.SlowTime(false);
+                    CameraController.Instance.NewTarget(bullet.transform);
+                    bulletMoveController.BulletSpeed = 10;
+                });
+                bulletCountManager.DeleteBullet();
             });
-            bulletCountManager.DeleteBullet();
-        }
-        else
-        {
-            Debug.Log("Не могу стрелять ТТ_ТТ");
         }
     }
 }

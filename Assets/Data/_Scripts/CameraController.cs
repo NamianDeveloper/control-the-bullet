@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private ShutterAnimator shutterAnimator;
     [SerializeField] private Transform player;
 
+    [SerializeField] private GameObject[] allCameraPosition;
+
     public static CameraController Instance;
 
     private Transform target;
@@ -27,7 +29,6 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         startPos = transform.localPosition;
-        Debug.Log(startPos);
     }
     public void NewTarget(Transform targets)
     {
@@ -69,5 +70,13 @@ public class CameraController : MonoBehaviour
                     }
                 }
             });
+    }
+
+    public void MoveShootCamera(bool isStart = false)
+    {
+        int currentPosition = Random.Range(0, allCameraPosition.Length);
+        if (isStart) currentPosition = 0;
+        transform.DOLocalMove(allCameraPosition[currentPosition].transform.localPosition, 0.5f * Time.timeScale);
+        transform.DOLocalRotate(allCameraPosition[currentPosition].transform.eulerAngles, 0.5f * Time.timeScale);
     }
 }

@@ -1381,6 +1381,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentModeText: {fileID: 0}
+--- !u!1 &473118330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 963194225, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+  m_PrefabInstance: {fileID: 7654033870173236208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &495362634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2238895864364627283, guid: 2d18d1ef7ec055147be0c4d7e875da3d, type: 3}
@@ -2280,6 +2285,11 @@ RectTransform:
   m_AnchoredPosition: {x: 252.44, y: 360.14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &911185776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1882040064, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+  m_PrefabInstance: {fileID: 7654033870173236208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &920476020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7694878132941816837, guid: 2d18d1ef7ec055147be0c4d7e875da3d, type: 3}
@@ -3381,6 +3391,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1398210390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 839655342, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+  m_PrefabInstance: {fileID: 7654033870173236208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1459881860
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,6 +5138,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1687701369}
     m_Modifications:
+    - target: {fileID: 498541869, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963194229, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: allCameraPosition.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 963194229, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: allCameraPosition.Array.data[0]
+      value: 
+      objectReference: {fileID: 473118330}
+    - target: {fileID: 963194229, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: allCameraPosition.Array.data[1]
+      value: 
+      objectReference: {fileID: 911185776}
+    - target: {fileID: 963194229, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: allCameraPosition.Array.data[2]
+      value: 
+      objectReference: {fileID: 1398210390}
+    - target: {fileID: 963194229, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
+      propertyPath: allCameraPosition.Array.data[3]
+      value: 
+      objectReference: {fileID: 1398210390}
     - target: {fileID: 3732472843718897007, guid: 62488c996769ecf479f8a2b1c2f91a7d, type: 3}
       propertyPath: m_RootOrder
       value: 0
