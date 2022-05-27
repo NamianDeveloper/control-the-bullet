@@ -16,7 +16,7 @@ public class MoneyController : MonoBehaviour
 
     [SerializeField] private Transform[] path;
 
-    private float money;
+    private int money;
     void Start()
     {
         if (Instance == null)
@@ -27,7 +27,7 @@ public class MoneyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (PlayerPrefs.HasKey("money")) money = PlayerPrefs.GetFloat("money");
+        if (PlayerPrefs.HasKey("money")) money = PlayerPrefs.GetInt("money");
         moneyText.text = money.ToString();
     }
 
@@ -55,14 +55,14 @@ public class MoneyController : MonoBehaviour
 
     public void AnimationMoney(int count = 1, int addMoney = 100)
     {
-        float OneAdd = (float)addMoney / count;
+        bool isPlus = false;
         int scatter = 60;
         Vector3[] vector3Path =
         {
             path[0].transform.position,
-             path[1].transform.position,
-              path[2].transform.position,
-               path[3].transform.position,
+            path[1].transform.position,
+            path[2].transform.position,
+            path[3].transform.position,
         };
 
         for (int i = 0; i < count; i++)
@@ -70,17 +70,22 @@ public class MoneyController : MonoBehaviour
             GameObject money = Instantiate(moneyPrefab, startPoint.transform.position, startPoint.transform.rotation, startPoint);
             money.transform.DOMove(money.transform.position + new Vector3(Random.Range(-scatter, scatter), Random.Range(-scatter, scatter)), 0.7f * Time.timeScale).OnComplete(() =>
             {
-                money.transform.DOPath(vector3Path, 0.5f * Time.timeScale).OnComplete(() => 
+                money.transform.DOPath(vector3Path, 0.5f * Time.timeScale).OnComplete(() =>
                 {
+                    if (!isPlus)
+                    {
+                        this.money += addMoney;
+                        moneyText.text = this.money.ToString();
+                        isPlus = true;
+                    }
+
                     Destroy(money);
-                    this.money += OneAdd;
-                    moneyText.text = Mathf.Round(this.money).ToString();
                 });
             });
         }
 
-      
 
-        PlayerPrefs.SetFloat("money", this.money);
+
+        PlayerPrefs.SetInt("money", this.money);
     }
 }
