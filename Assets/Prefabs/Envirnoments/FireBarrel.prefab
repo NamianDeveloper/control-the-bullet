@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3412676499676912157}
   m_Layer: 0
   m_Name: FireBarrel
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9453494163429148a0566d1436ec2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 0
+  Radius: 10
   explosion: {fileID: 4460035603298860171}
 --- !u!65 &3412676499676912157
 BoxCollider:
