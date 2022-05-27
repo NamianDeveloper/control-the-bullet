@@ -48,11 +48,15 @@ public class BulletCollisions : MonoBehaviour
 
         else if (other.CompareTag("Glass"))
         {
-            if (other.TryGetComponent<PartOfGlass>(out PartOfGlass partOfGlass))
+            if (other.TryGetComponent<GlassController>(out GlassController glassController))
             {
-                partOfGlass.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
+                glassController.EnablePhysics(true);
+            }
+            if (other.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+            {
+                Debug.Log(" упол - коллизии€€€€");
+                rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
 
-                partOfGlass.GlassController.EnablePhysics(true);
 
                 bulletMoveController.BulletSpeed = 1;
                 Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)

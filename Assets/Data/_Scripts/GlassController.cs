@@ -14,7 +14,10 @@ public class GlassController : MonoBehaviour
     {
         for (int i = 0; i < AllRigidbodys.Length; i++)
         {
+            AllRigidbodys[i].gameObject.SetActive(status);
             AllRigidbodys[i].isKinematic = !status;
         }
+        if (status) gameObject.SetActive(false);
+
     }
 }

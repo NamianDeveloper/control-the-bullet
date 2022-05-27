@@ -38,7 +38,6 @@ public class CameraController : MonoBehaviour
 
     public void ResetTarget(bool showUI = false)
     {
-       // gameObject.transform.SetParent(player);
         target = null;
         gameObject.transform.SetParent(player);
 
