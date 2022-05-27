@@ -39,7 +39,7 @@ public class BulletCollisions : MonoBehaviour
                     .TakeUntilDisable(gameObject)
                     .Subscribe(_ =>
                     {
-                        bulletMoveController.BulletSpeed = 12;
+                        bulletMoveController.BulletSpeed = 10;
                     });
 
                 if (bulletMode.CurrentFireMode == FireMode.OneShotOneKill)
@@ -67,7 +67,7 @@ public class BulletCollisions : MonoBehaviour
                     .TakeUntilDisable(gameObject)
                     .Subscribe(_ =>
                     {
-                        bulletMoveController.BulletSpeed = 12;
+                        bulletMoveController.BulletSpeed = 10;
                     });
             }
         }

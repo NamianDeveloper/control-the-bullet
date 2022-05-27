@@ -39,7 +39,7 @@ public class ShootController : MonoBehaviour
             {
                 TimeManager.Instance.SlowTime(false);
                 CameraController.Instance.NewTarget(bullet.transform);
-                bulletMoveController.BulletSpeed = 12;
+                bulletMoveController.BulletSpeed = 10;
             });
             bulletCountManager.DeleteBullet();
         }
