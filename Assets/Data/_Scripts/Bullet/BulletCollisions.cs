@@ -23,6 +23,9 @@ public class BulletCollisions : MonoBehaviour
         {
             if (other.TryGetComponent<PartOfRagdoll>(out PartOfRagdoll partOfRagdoll))
             {
+                if (partOfRagdoll.RagdollController.EnemyController.isDead) return;
+                else partOfRagdoll.RagdollController.EnemyController.isDead = true;
+
                 GameManager.Instance.DeleteEnemy(partOfRagdoll.RagdollController.gameObject, partOfRagdoll.PartOfKill);
                 partOfRagdoll.Rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
 
@@ -36,7 +39,7 @@ public class BulletCollisions : MonoBehaviour
                     .TakeUntilDisable(gameObject)
                     .Subscribe(_ =>
                     {
-                        bulletMoveController.BulletSpeed = 7;
+                        bulletMoveController.BulletSpeed = 12;
                     });
 
                 if (bulletMode.CurrentFireMode == FireMode.OneShotOneKill)
@@ -64,7 +67,7 @@ public class BulletCollisions : MonoBehaviour
                     .TakeUntilDisable(gameObject)
                     .Subscribe(_ =>
                     {
-                        bulletMoveController.BulletSpeed = 7;
+                        bulletMoveController.BulletSpeed = 12;
                     });
             }
         }

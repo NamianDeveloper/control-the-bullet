@@ -1565,7 +1565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2627099293023216808, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: Radius
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704164646166713502, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: m_Name
@@ -2786,7 +2786,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2627099293023216808, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: Radius
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704164646166713502, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: m_Name
@@ -3130,7 +3130,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2627099293023216808, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: Radius
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704164646166713502, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: m_Name
@@ -3462,7 +3462,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2627099293023216808, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: Radius
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704164646166713502, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: m_Name
@@ -3980,7 +3980,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2627099293023216808, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: Radius
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704164646166713502, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: m_Name
@@ -4910,7 +4910,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2627099293023216808, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: Radius
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4704164646166713502, guid: d87f18535f05d96498533f6d75f9090b, type: 3}
       propertyPath: m_Name

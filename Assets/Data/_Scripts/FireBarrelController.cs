@@ -56,7 +56,7 @@ public class FireBarrelController : MonoBehaviour
                     if (coll.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
                     {
                         Debug.Log($"У {coll.gameObject.name} есть Риджидбоди");
-                        rigidbody.AddExplosionForce(600, gameObject.transform.position, Radius, 3);
+                        rigidbody.AddExplosionForce(400, gameObject.transform.position, Radius, 3);
                     }
                 }
             }

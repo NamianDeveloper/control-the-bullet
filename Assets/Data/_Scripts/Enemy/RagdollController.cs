@@ -9,6 +9,12 @@ public class RagdollController : MonoBehaviour
     [SerializeField] private GameObject mark;
     [SerializeField] private ParticleSystem blood;
 
+    public EnemyController EnemyController
+    {
+        get;
+        set;
+    }
+
     [SerializeField] private float time;
 
     public bool IsDead { get;  set; }
@@ -16,6 +22,7 @@ public class RagdollController : MonoBehaviour
     public GameObject point;
     private void Start()
     {
+        EnemyController = GetComponent<EnemyController>();
         EnablePhysics(false);
     }
 

@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 2
-  bulletSpeed: 9
+  bulletSpeed: 12
   maxTiltAngle: 70
   wind: {fileID: 1787980041080020790}
 --- !u!114 &8610522009967953694
