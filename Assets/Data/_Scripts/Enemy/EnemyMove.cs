@@ -22,26 +22,34 @@ public class EnemyMove : MonoBehaviour
     private Tween rotationTween;
     void Start()
     {
-        path = new Vector3[transformPath.Length];
+        path = new Vector3[transformPath.Length * 2 - 1];
 
-        for (int i = 0; i < path.Length; i++)
+        for (int i = 0; i < transformPath.Length; i++)
         {
             path[i] = transformPath[i].position;
+            Debug.Log($"path[{i}] = transformPath[{i}].position;");
+        }
+        for (int i = 1; i < transformPath.Length; i++)
+        {
+            Debug.Log($"path[{path.Length - i}] = transformPath[{i - 1}].position;");
+            path[path.Length - i] = transformPath[i - 1].position;
+
         }
         if (isStatic) return;
 
         animator.Play("Move");
-        tween = gameObject.transform.DOPath(path, (timeToMove * (path.Length - 1)) * Time.timeScale)
+        Debug.Log(Time.timeScale);
+        tween = gameObject.transform.DOPath(path, (timeToMove * (path.Length - 1)))
         .OnWaypointChange(_ =>
         {
             RotateCharacter(_);
-            tween.Pause();
+           // tween.Pause();
         })
         .SetEase(Ease.Linear)
         .OnComplete(() =>
         {
-            if (isLoopMoving) tween.Restart();
-        });
+
+        }).SetLoops(-1);
     }
 
 
@@ -49,7 +57,7 @@ public class EnemyMove : MonoBehaviour
     {
         transform.DOLookAt(path[id + 1], timeToRotate, AxisConstraint.Y, Vector3.up).OnComplete(() =>
         {
-            tween.Play();
+          //  tween.Play();
         });
     }
     public void KillDOTween()
