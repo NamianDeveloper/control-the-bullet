@@ -54,13 +54,6 @@ public class BulletCollisions : MonoBehaviour
             if (other.TryGetComponent<GlassController>(out GlassController glassController))
             {
                 glassController.EnablePhysics(true);
-            }
-            if (other.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
-            {
-                Debug.Log(" упол - коллизии€€€€");
-                rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
-
-
                 bulletMoveController.BulletSpeed = 1;
                 Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)
                     .TakeUntilDestroy(gameObject)
@@ -69,6 +62,10 @@ public class BulletCollisions : MonoBehaviour
                     {
                         bulletMoveController.BulletSpeed = 10;
                     });
+            }
+            if (other.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+            {
+                rigidbody.AddForce(transform.forward * (100 * ImpactStrength));
             }
         }
     }

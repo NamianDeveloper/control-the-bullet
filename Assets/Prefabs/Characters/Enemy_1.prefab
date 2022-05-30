@@ -140,6 +140,7 @@ MonoBehaviour:
   - {fileID: 4037525010963808338}
   mark: {fileID: 3657533587318131170}
   blood: {fileID: 4631282190411300436}
+  ExplosionCollider: {fileID: 6953476467407659973}
   time: 1
   point: {fileID: 6431855173780778567}
 --- !u!114 &5936522025682052043
