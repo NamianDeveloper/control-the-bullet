@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using UniRx;
+using UnityEngine.UI;
 public class CameraController : MonoBehaviour
 {
     [SerializeField, Range(-2, 2)] private float ofsetY;
@@ -10,6 +11,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform player;
 
     [SerializeField] private GameObject[] allCameraPosition;
+
+    [SerializeField] private Image darkImage;
 
     public static CameraController Instance;
 
@@ -41,20 +44,9 @@ public class CameraController : MonoBehaviour
     {
         target = null;
         gameObject.transform.SetParent(player);
+        ShowDarkImage();
 
-        gameObject.transform.DOLocalRotate(new Vector3(15, -20, 0), 0.4f);
-        gameObject.transform.DOLocalMove(startPos, 0.4f)
-        .OnComplete(() =>
-        {
-            if (showUI)
-            {
 
-                UiController.Instance.ShowUiElements();
-            }
-            shutterAnimator.RetractShutter();
-            GameManager.Instance.OnEndBullet();
-            TimeManager.Instance.ResetSlowTime();
-        });
     }
     private void SetCamera(Vector3 doMove, Vector3 doRotate, float time, Transform bulletTarget = null)
     {
@@ -75,14 +67,14 @@ public class CameraController : MonoBehaviour
     public void MoveShootCamera(bool isStart = false)
     {
         int currentPosition = Random.Range(0, allCameraPosition.Length);
-        if (isStart) currentPosition = 0;
-        Debug.Log(transform.eulerAngles + "/" + allCameraPosition[currentPosition].transform.eulerAngles);
         if (isStart)
         {
-            Debug.Log("Сейчас на " + transform.position);
-            Debug.Log("Долэен перемещаться к " + allCameraPosition[0].transform.position);
             transform.DOMove(allCameraPosition[0].transform.position, 0.5f * Time.timeScale);
-            transform.DORotate(allCameraPosition[0].transform.eulerAngles, 0.5f * Time.timeScale);
+            transform.DORotate(allCameraPosition[0].transform.eulerAngles, 0.5f * Time.timeScale).OnComplete(() =>
+            {
+                UiController.Instance.ShowUiElements();
+                GameManager.Instance.OnEndBullet();
+            });
         }
         else
         {
@@ -90,5 +82,32 @@ public class CameraController : MonoBehaviour
             transform.DORotate(allCameraPosition[currentPosition].transform.eulerAngles, 0.5f * Time.timeScale);
         }
 
+    }
+
+    private void ShowDarkImage()
+    {
+        float time = 0.5f * Time.timeScale;
+        int currentPosition = Random.Range(0, allCameraPosition.Length);
+
+
+
+        darkImage.DOColor(new Color(0, 0, 0, 1), time)
+        .OnComplete(() =>
+        {
+
+            transform.position = allCameraPosition[currentPosition].transform.position;
+            transform.rotation = new Quaternion(
+                allCameraPosition[currentPosition].transform.rotation.x,
+                allCameraPosition[currentPosition].transform.rotation.y,
+                allCameraPosition[currentPosition].transform.rotation.z,
+                allCameraPosition[currentPosition].transform.rotation.w);
+
+            shutterAnimator.RetractShutter();
+
+            TimeManager.Instance.ResetSlowTime();
+
+
+            darkImage.DOColor(new Color(0, 0, 0, 0), time);
+        });
     }
 }
