@@ -55,7 +55,7 @@ public class BulletCollisions : MonoBehaviour
             {
                 glassController.EnablePhysics(true);
                 bulletMoveController.BulletSpeed = 1;
-                Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)
+                Observable.Timer(System.TimeSpan.FromSeconds(0.5f) * Time.timeScale)
                     .TakeUntilDestroy(gameObject)
                     .TakeUntilDisable(gameObject)
                     .Subscribe(_ =>
