@@ -31,7 +31,7 @@ public class BulletCollisions : MonoBehaviour
 
                 partOfRagdoll.AddBlood(transform.position);
 
-                partOfRagdoll.RagdollController.EnablePhysics(true, transform.position);
+                partOfRagdoll.RagdollController.EnablePhysics(true);
 
                 bulletMoveController.BulletSpeed = 1;
                 Observable.Timer(System.TimeSpan.FromSeconds(1) * Time.timeScale)

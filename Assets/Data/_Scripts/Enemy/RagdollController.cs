@@ -15,26 +15,32 @@ public class RagdollController : MonoBehaviour
         set;
     }
 
-    [SerializeField] private float time;
-
-    public bool IsDead { get;  set; }
+    private EnemyMove enemyMove;
+    public bool IsDead { get; set; }
 
     public GameObject point;
     private void Start()
     {
         EnemyController = GetComponent<EnemyController>();
         EnablePhysics(false);
+        enemyMove = GetComponent<EnemyMove>();
     }
 
-    public void EnablePhysics(bool status, Vector3 pointOfImpact = new Vector3())
+    public void EnablePhysics(bool status)
     {
         mark.SetActive(!status);
         ExplosionCollider.SetActive(!status);
-        ShowBlood();
         for (int i = 0; i < AllRigidbodys.Length; i++)
         {
             AllRigidbodys[i].isKinematic = !status;
         }
+
+        if (status)
+        {
+            enemyMove.KillDOTween();
+            ShowBlood();
+        }
+
     }
     private void ShowBlood()
     {

@@ -5,8 +5,21 @@ using DG.Tweening;
 
 public class EnemyMove : MonoBehaviour
 {
+    [Header("Setting")]
+    [SerializeField] private bool isStatic;
+    [SerializeField] private float timeToMove;
+    [SerializeField] private float timeToRotate;
+    [SerializeField] private bool isLoopMoving;
+    //[SerializeField] private bool isLoopMoving;
+
+    [Header("Other")]
     [SerializeField] private Transform[] transformPath;
-     private Vector3[] path;
+    [SerializeField] private Animator animator;
+
+    private Vector3[] path;
+
+    private Tween tween;
+    private Tween rotationTween;
     void Start()
     {
         path = new Vector3[transformPath.Length];
@@ -15,26 +28,34 @@ public class EnemyMove : MonoBehaviour
         {
             path[i] = transformPath[i].position;
         }
+        if (isStatic) return;
 
-        gameObject.transform.DOPath(path, 5)
+        animator.Play("Move");
+        tween = gameObject.transform.DOPath(path, (timeToMove * (path.Length - 1)) * Time.timeScale)
         .OnWaypointChange(_ =>
         {
             RotateCharacter(_);
+            tween.Pause();
         })
         .SetEase(Ease.Linear)
-        .SetLoops(-1);
+        .OnComplete(() =>
+        {
+            if (isLoopMoving) tween.Restart();
+        });
     }
+
 
     private void RotateCharacter(int id)
     {
-        //  Vector3 angle = transform.rotation.eulerAngles - transformPath[id + 1].rotation.eulerAngles;
-        Vector3 angle = transform.position - transformPath[id + 1].transform.position;
-        angle.x = 0;
-        angle.z = 0;
-        //   Vector3 angle = transform.position - transformPath[id + 1].position;
-        Debug.Log(angle);
-        transform.DORotate(angle, 0.4f); 
-        Debug.Log(id + " Шаг пройден");
-      //  transform.LookAt(transformPath[id], Vector3.up);
+        transform.DOLookAt(path[id + 1], timeToRotate, AxisConstraint.Y, Vector3.up).OnComplete(() =>
+        {
+            tween.Play();
+        });
+    }
+    public void KillDOTween()
+    {
+        rotationTween?.Kill();
+        tween?.Kill();
+        animator.runtimeAnimatorController = null;
     }
 }
