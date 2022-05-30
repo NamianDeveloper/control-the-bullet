@@ -174,7 +174,7 @@ MonoBehaviour:
   - {fileID: 5818387267473263602}
   - {fileID: 8621577149167507689}
   mark: {fileID: 3657533587318131170}
-  blood: {fileID: 0}
+  blood: {fileID: 7852206933908517498}
   ExplosionCollider: {fileID: 6953476467407659973}
   point: {fileID: 1556418278418995273}
 --- !u!114 &5936522025682052043
@@ -610,6 +610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+--- !u!198 &7852206933908517498 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19894058, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+  m_PrefabInstance: {fileID: 7852206933922970960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7852206933922555814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416502, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
